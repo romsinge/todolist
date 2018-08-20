@@ -29,6 +29,7 @@ export class AppComponent {
 
   handleDone(id: number) {
     // this.tasks.splice(index, 1)
-    this.tasks.find(task => task.id == id).done = true
+    let task = this.tasks.find(task => task.id == id)
+    task.done = !task.done
   }
 }

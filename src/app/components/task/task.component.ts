@@ -11,6 +11,8 @@ export class TaskComponent implements OnInit {
   @Input() task: Task
   @Output() done: EventEmitter<number> = new EventEmitter()
 
+  myDate: Date = new Date()
+
   constructor() { }
 
   ngOnInit() {

@@ -6,12 +6,14 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
-    HighlightDirective
+    HighlightDirective,
+    StatusPipe
   ],
   imports: [
     BrowserModule,

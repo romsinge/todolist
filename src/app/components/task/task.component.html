@@ -1,6 +1,6 @@
 <mat-list-item (click)="handleClick()">
     <mat-icon mat-list-icon>play_circle_filled</mat-icon>
     <h4 mat-line>{{task.name}}</h4>
-    <p mat-line> {{task.done}} </p>
+    <p mat-line> {{task.done | status}} </p>
   </mat-list-item>
 <mat-divider></mat-divider>
