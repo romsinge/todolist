@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import ROUTES from './app.routes';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { LoginComponent } from './components/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     FormsModule,
     MaterialModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    HttpClientModule
   ],
   providers: [TaskFilterPipe],
   bootstrap: [AppComponent]

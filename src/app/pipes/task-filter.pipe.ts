@@ -8,6 +8,10 @@ import { Task } from '../interfaces/task';
 export class TaskFilterPipe implements PipeTransform {
 
   transform(tasks: Task[], status: boolean): Task[] {
+    if (!tasks) {
+      return []
+    }
+
     let newTasks = tasks.filter(task => {
       return task.done == status
     })

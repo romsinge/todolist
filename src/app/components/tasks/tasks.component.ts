@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskFilterPipe } from '../../pipes/task-filter.pipe';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'org-tasks',
@@ -15,26 +16,25 @@ export class TasksComponent implements OnInit {
     private taskService: TaskService
   ) {}
 
-  tasksDone: Task[]
+  tasksDone: Task[] = []
 
-  tasks: Task[]
-
+  tasks$: Observable<Task[]>
+  
   ngOnInit() {
-    this.tasks = this.taskService.tasks
-    this.filterTasks()
+    this.tasks$ = this.taskService.getTasks()
   }
 
   handleDone(id: number) {
-    // this.tasks.splice(index, 1)
-    // let task = this.tasks.find(task => task.id == id)
-    // task.done = !task.done
-    this.taskService.toggleTaskStatusById(id)
+    
+    this.taskService.toggleTaskStatusById(id).subscribe(() => {
+      this.tasks$ = this.taskService.getTasks()
+    })
 
-    this.filterTasks()
+    // this.filterTasks()
   }
 
-  filterTasks() {
-    this.tasksDone = this.taskFilter.transform(this.tasks, true)
-  }
+  // filterTasks() {
+  //   this.tasksDone = this.taskFilter.transform(this.tasks, true)
+  // }
 
 }

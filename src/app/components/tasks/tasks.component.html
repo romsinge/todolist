@@ -1,6 +1,6 @@
 <mat-list>
   <h3 mat-subheader>TODO</h3>
-  <span *ngFor="let task of tasks | taskFilter:false; let isEven = even;">
+  <span *ngFor="let task of tasks$ | async | taskFilter:false; let isEven = even;">
     <org-task
       orgHighlight
       [applicable]="isEven"
@@ -14,7 +14,7 @@
 
 <mat-list>
   <h3 mat-subheader>DONE</h3>
-  <span *ngFor="let task of tasksDone; let isEven = even;">
+  <span *ngFor="let task of tasks$ | async | taskFilter:true; let isEven = even;">
     <org-task
       orgHighlight
       [applicable]="isEven"
