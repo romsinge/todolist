@@ -1,3 +1,4 @@
+import { AdminGuard } from './services/admin.guard';
 import { AuthGuard } from './services/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
@@ -14,10 +15,11 @@ const ROUTES: Routes = [
     path: 'tasks',
     component: TasksComponent,
     canActivate: [AuthGuard],
-    children: [
+    children: [ 
       {
         path: 'create',
-        component: TaskCreateComponent
+        component: TaskCreateComponent,
+        canActivate: [AdminGuard]
       },
       {
         path: 'details/:id',

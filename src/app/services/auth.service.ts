@@ -11,6 +11,7 @@ export class AuthService {
   ) { }
 
   private _isLoggedIn: boolean = false
+  user: any = {}
 
   get isLoggedIn() {
     return this._isLoggedIn
@@ -23,6 +24,9 @@ export class AuthService {
 
     if (username == 'rom' && password == 'rom') {
       this._isLoggedIn = true
+      this.user = {
+        username
+      }
       this.router.navigateByUrl('tasks')
     } else {
       this.router.navigateByUrl('')
