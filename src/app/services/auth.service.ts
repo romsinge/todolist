@@ -11,6 +11,10 @@ export class AuthService {
   ) { }
 
   private _isLoggedIn: boolean = false
+  roles = {
+    admin: [''],
+    gestionnaire: ['']
+  }
   user: any = {}
 
   get isLoggedIn() {
