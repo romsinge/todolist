@@ -1,29 +1,3 @@
 <mat-toolbar color="primary">Orange Mali</mat-toolbar>
 
-<mat-list>
-  <h3 mat-subheader>TODO</h3>
-  <span *ngFor="let task of tasks | taskFilter:false; let isEven = even;">
-    <org-task
-      orgHighlight
-      [applicable]="isEven"
-      (done)="handleDone($event)"
-      [task]="task"
-      [class.done]="task.done"
-    ></org-task>
-    <mat-divider></mat-divider>
-  </span>
-</mat-list>
-
-<mat-list>
-  <h3 mat-subheader>DONE</h3>
-  <span *ngFor="let task of tasksDone; let isEven = even;">
-    <org-task
-      orgHighlight
-      [applicable]="isEven"
-      (done)="handleDone($event)"
-      [task]="task"
-      [class.done]="task.done"
-    ></org-task>
-    <mat-divider></mat-divider>
-  </span>
-</mat-list>
+<org-tasks></org-tasks>

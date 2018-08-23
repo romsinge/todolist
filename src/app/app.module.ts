@@ -8,6 +8,7 @@ import { TaskComponent } from './components/task/task.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { StatusPipe } from './pipes/status.pipe';
 import { TaskFilterPipe } from './pipes/task-filter.pipe';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TaskFilterPipe } from './pipes/task-filter.pipe';
     TaskComponent,
     HighlightDirective,
     StatusPipe,
-    TaskFilterPipe
+    TaskFilterPipe,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
