@@ -1,5 +1,6 @@
 import { Task } from './interfaces/task';
 import { Component } from '@angular/core';
+import { TaskFilterPipe } from './pipes/task-filter.pipe';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  constructor(private taskFilter: TaskFilterPipe) {}
+
   title = 'orangemali';
 
   tasks: Task[] = [
@@ -18,7 +22,7 @@ export class AppComponent {
     {
       id: 1,
       name: 'Sortir le chien',
-      done: false
+      done: true
     },
     {
       id: 2,
@@ -27,9 +31,21 @@ export class AppComponent {
     }
   ]
 
+  tasksDone: Task[]
+
+  ngOnInit() {
+    this.filterTasks()
+  }
+
   handleDone(id: number) {
     // this.tasks.splice(index, 1)
     let task = this.tasks.find(task => task.id == id)
     task.done = !task.done
+
+    this.filterTasks()
+  }
+
+  filterTasks() {
+    this.tasksDone = this.taskFilter.transform(this.tasks, true)
   }
 }

@@ -7,20 +7,22 @@ import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { StatusPipe } from './pipes/status.pipe';
+import { TaskFilterPipe } from './pipes/task-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
     HighlightDirective,
-    StatusPipe
+    StatusPipe,
+    TaskFilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [TaskFilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
