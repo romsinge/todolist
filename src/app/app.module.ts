@@ -9,6 +9,10 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { StatusPipe } from './pipes/status.pipe';
 import { TaskFilterPipe } from './pipes/task-filter.pipe';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { TaskCreateComponent } from './components/task-create/task-create.component';
+import { RouterModule } from '@angular/router';
+import ROUTES from './app.routes';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,15 @@ import { TasksComponent } from './components/tasks/tasks.component';
     HighlightDirective,
     StatusPipe,
     TaskFilterPipe,
-    TasksComponent
+    TasksComponent,
+    TaskCreateComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [TaskFilterPipe],
   bootstrap: [AppComponent]

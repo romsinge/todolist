@@ -26,15 +26,19 @@ export class TaskService {
     }
   ]
 
-  get tasks() {
+  get tasks(): Task[] {
     return this._tasks
   }
 
-  toggleTaskStatusById(id: number) {
+  toggleTaskStatusById(id: number): void {
     let task = this._tasks.find(task => {
       return task.id == id
     })
 
     task.done = !task.done
+  }
+
+  getTaskById(id: number): Task {
+    return this.tasks.find(task => task.id == id)
   }
 }
