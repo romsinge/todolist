@@ -1,3 +1,4 @@
+import { TaskService } from './services/task.service';
 import { Task } from './interfaces/task';
 import { Component } from '@angular/core';
 import { TaskFilterPipe } from './pipes/task-filter.pipe';
@@ -9,38 +10,27 @@ import { TaskFilterPipe } from './pipes/task-filter.pipe';
 })
 export class AppComponent {
 
-  constructor(private taskFilter: TaskFilterPipe) {}
+  constructor(
+    private taskFilter: TaskFilterPipe,
+    private taskService: TaskService
+  ) {}
 
   title = 'orangemali';
 
-  tasks: Task[] = [
-    {
-      id: 0,
-      name: 'Faire les courses',
-      done: false
-    },
-    {
-      id: 1,
-      name: 'Sortir le chien',
-      done: true
-    },
-    {
-      id: 2,
-      name: 'Faire le ménage',
-      done: false
-    }
-  ]
-
   tasksDone: Task[]
 
+  tasks: Task[]
+
   ngOnInit() {
+    this.tasks = this.taskService.tasks
     this.filterTasks()
   }
 
   handleDone(id: number) {
     // this.tasks.splice(index, 1)
-    let task = this.tasks.find(task => task.id == id)
-    task.done = !task.done
+    // let task = this.tasks.find(task => task.id == id)
+    // task.done = !task.done
+    this.taskService.toggleTaskStatusById(id)
 
     this.filterTasks()
   }
