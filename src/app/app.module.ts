@@ -13,6 +13,7 @@ import { TaskCreateComponent } from './components/task-create/task-create.compon
 import { RouterModule } from '@angular/router';
 import ROUTES from './app.routes';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
     TaskFilterPipe,
     TasksComponent,
     TaskCreateComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

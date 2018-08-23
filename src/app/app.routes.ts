@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { Routes } from '@angular/router'
 import { TasksComponent } from './components/tasks/tasks.component';
@@ -6,8 +7,7 @@ import { TaskCreateComponent } from './components/task-create/task-create.compon
 const ROUTES: Routes = [
   {
     path: '',
-    redirectTo: 'tasks',
-    pathMatch: 'full'
+    component: LoginComponent
   },
   {
     path: 'tasks',
