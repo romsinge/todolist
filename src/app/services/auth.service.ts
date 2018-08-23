@@ -10,7 +10,11 @@ export class AuthService {
     private router: Router
   ) { }
 
-  isLoggedIn: boolean = false
+  private _isLoggedIn: boolean = false
+
+  get isLoggedIn() {
+    return this._isLoggedIn
+  }
 
   login(credentials) {
     // TODO : login with server
@@ -18,8 +22,10 @@ export class AuthService {
     let { username, password } = credentials
 
     if (username == 'rom' && password == 'rom') {
-      this.isLoggedIn = true
+      this._isLoggedIn = true
       this.router.navigateByUrl('tasks')
+    } else {
+      this.router.navigateByUrl('')
     }
   }
 }
