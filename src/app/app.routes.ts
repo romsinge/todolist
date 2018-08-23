@@ -11,20 +11,22 @@ const ROUTES: Routes = [
   },
   {
     path: 'tasks',
-    component: TasksComponent
-  },
-  {
-    path: 'task-create',
-    component: TaskCreateComponent
-  },
-  {
-    path: 'task-details/:id',
-    component: TaskDetailsComponent
-  },
-  {
-    path: 'task-details',
-    redirectTo: '',
-    pathMatch: 'full'
+    component: TasksComponent,
+    children: [
+      {
+        path: 'create',
+        component: TaskCreateComponent
+      },
+      {
+        path: 'details/:id',
+        component: TaskDetailsComponent
+      },
+      {
+        path: 'details',
+        redirectTo: '',
+        pathMatch: 'full'
+      },
+    ]
   },
   {
     path: '**',
