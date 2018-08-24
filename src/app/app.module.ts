@@ -11,7 +11,7 @@ import { TaskFilterPipe } from './pipes/task-filter.pipe';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { RouterModule } from '@angular/router';
-import ROUTES from './app.routes';
+import { ROUTES } from './app.routes';
 import { TaskDetailsComponent } from './components/task-details/task-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';

@@ -6,7 +6,7 @@ import { Routes } from '@angular/router'
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 
-const ROUTES: Routes = [
+export const ROUTES: Routes = [
   {
     path: '',
     component: LoginComponent
@@ -37,5 +37,3 @@ const ROUTES: Routes = [
     redirectTo: ''
   }
 ]
-
-export default ROUTES
