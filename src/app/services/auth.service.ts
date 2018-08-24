@@ -12,7 +12,7 @@ export class AuthService {
 
   private _isLoggedIn: boolean = false
   roles = {
-    admin: [''],
+    admin: ['rom'],
     gestionnaire: ['']
   }
   user: any = {}

@@ -13,6 +13,8 @@ export class TaskComponent implements OnInit {
 
   myDate: Date = new Date()
 
+  state: string = 'inactive'
+
   constructor() { }
 
   ngOnInit() {
