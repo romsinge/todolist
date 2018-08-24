@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { TaskFilterPipe } from '../../pipes/task-filter.pipe';
 import { TaskService } from '../../services/task.service';
@@ -13,7 +14,8 @@ export class TasksComponent implements OnInit {
 
   constructor(
     private taskFilter: TaskFilterPipe,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   tasksDone: Task[] = []
@@ -21,7 +23,9 @@ export class TasksComponent implements OnInit {
   tasks$: Observable<Task[]>
   
   ngOnInit() {
-    this.tasks$ = this.taskService.getTasks()
+    // this.activatedRoute.queryParams.subscribe(queryParams => {
+      this.tasks$ = this.taskService.getTasks()
+    // })
   }
 
   handleDone(id: number) {

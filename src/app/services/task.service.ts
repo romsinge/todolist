@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../interfaces/task';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class TaskService {
 
-  tasks$: Observable<Task[]>
+  tasks$: Subject<Task[]>
 
   constructor(
     private http: HttpClient
@@ -21,21 +21,19 @@ export class TaskService {
     return this._tasks
   }
 
-  getTasks(): Observable<Task[]> {
-    this.tasks$ = new Observable(observer => {
+  getTasks() {
+    this.tasks$ = new Subject()
 
-      if (this._tasks && this._tasks.length) {
-        observer.next(this._tasks)
-      } else {
-        this.http.get('http://localhost:3000/tasks').pipe(map(res => {
-          return <Task[]>res
-        })).subscribe(tasks => {
-          this._tasks = tasks
-          observer.next(tasks)
-        })
-      }
-
-    })
+    // if (this._tasks && this._tasks.length) {
+    //   this.tasks$.next(this._tasks)
+    // } else {
+      this.http.get('http://localhost:3000/tasks').pipe(map(res => {
+        return <Task[]>res
+      })).subscribe(tasks => {
+        this._tasks = tasks
+        this.tasks$.next(tasks)
+      })
+    // }
 
     return this.tasks$
   }
@@ -52,5 +50,19 @@ export class TaskService {
 
   getTaskById(id: number): Task {
     return this.tasks.find(task => task.id == id)
+  }
+
+  createTask(name: string) {
+    let createTask$ = this.http.post('http://localhost:3000/tasks', {
+      name,
+      done: false
+    })
+
+    createTask$.pipe(map(res => <Task>res)).subscribe(task => {
+      this._tasks.push(task)
+      this.tasks$.next(this._tasks)
+    })
+
+    return createTask$
   }
 }

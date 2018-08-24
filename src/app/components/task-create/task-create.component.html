@@ -1,7 +1,11 @@
-<form>
+<form (submit)="handleSubmit()" #taskForm="ngForm">
   <mat-form-field>
-    <input matInput placeholder="Task" />
+    <input #titleInput="ngModel" required matInput name="title" placeholder="Task" ngModel/>
+    <mat-error *ngIf="titleInput.hasError('required') && titleInput.touched">
+      Ce champ est requis
+    </mat-error>
   </mat-form-field>
   
-  <button mat-button>OK</button>
+  <button [disabled]="taskForm.invalid" mat-button>OK</button>
 </form>
+

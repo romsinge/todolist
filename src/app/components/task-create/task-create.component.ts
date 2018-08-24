@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'org-task-create',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskCreateComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('taskForm') taskForm
+
+  constructor(
+    private taskService: TaskService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  handleSubmit() {
+    this.taskService.createTask(this.taskForm.value.title).subscribe(task => {
+      
+    })
   }
 
 }
